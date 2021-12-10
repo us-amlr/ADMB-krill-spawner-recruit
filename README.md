@@ -6,3 +6,5 @@ The 'model' directory in this repository contains the AD Model Builder (ADMB) co
 The 'krill.tpl' files were pre-compiled in ADMB version 11.1 for the original paper. These were recompiled using ADMB version 12.3 to produce the model outputs ('krill.rep' files) reported in this repository.  Small differences in the model outputs in this repository from the original paper may be due to differences in the ADMB version, or in the MinGW compilers used.
 
 The 'Fig...' directories contain the R scripts that produced the corresponding pdfs from Kinzey et al., 2019. These scripts read the 'krill.rep' files for each model and plot results. To reproduce these Figures, download the 'models' directory and the R scripts to a local directory. Use setwd() to identify the location of the 'models' directory before running the scripts.
+
+Figures 3 and 4 in Kinzey et al., 2019 represent over 100 model runs and are not reproduced here.
