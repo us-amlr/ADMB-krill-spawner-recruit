@@ -1,18 +1,16 @@
 # setwd()
-
+library(Hmisc)
+path.in <- path.out <- getwd()
 if(!dir.exists('Fig2')){
   dir.create('Fig2')
   }
-library(Hmisc)
-path.name <- getwd()
-path.out <- paste(getwd(),'/Fig2/',sep='')
 yrs.sp <- c(1966:2036)
 yrs.rec <- c(1967:2036)
 config.dir <-c(
-	       "/models/Fig2/Beverton_Holt/",
-               "/models/Fig2/Ricker(a)/",
-               "/models/Fig2/Ricker(b)/", 
-               "/models/Fig2/no stock-recruit function/"
+	       "/models/forced/Beverton_Holt/",
+               "/models/forced/Ricker(a)/",
+               "/models/forced/Ricker(b)/", 
+               "/models/forced/no stock-recruit function/"
               )
 config.nms <- c("Beverton-Holt","Ricker(a)","Ricker(b)","no stock-recruit function")	      
 id.cols <- c(1:6)
@@ -24,7 +22,7 @@ F.age <- list()
 q.fsh <- vector()
 catch.vector <- vector()
 for(i.conf in 1:length(config.dir)){
-     full.path <- paste(path.name,config.dir[i.conf],sep="")
+     full.path <- paste(path.in,config.dir[i.conf],sep="")
      source(file=paste(full.path,"krill.rep",sep=""))
      Sp.Biom.mods[i.conf,] <- Sp_Biom[[1]][match(1966:2036,styr_sp:endyr)]
      rec.mods[i.conf,] <- mod_rec[[1]][match(1967:2036,styr_rec:endyr)]
@@ -38,7 +36,7 @@ for(i.conf in 1:length(config.dir)){
 yrs.dat<-yrs.sp[1:(length(yrs.sp)-21)]
 Sp.Biom.mods <- Sp.Biom.mods[,1:50]
 
-plt.name <- paste(path.out,"/PLOT_Fig2_forced_Sp_Biom.pdf",sep="")
+plt.name <- paste(path.out,"/Fig2/Fig2_forced_Sp_Biom.pdf",sep="")
 pdf(file = plt.name,width=7,height=7)
 par(mfrow=c(1,1),cex=1.2,oma=c(2,2,2,0))
 y.lim=c(min(log(Sp.Biom.mods),na.rm=T),max(log(Sp.Biom.mods),na.rm=T)+1)
@@ -60,7 +58,7 @@ dev.off()
 # set recruitment years and data to compare
 rec.mods <- rec.mods[,1:50]
 yrs.dat <- yrs.rec[1:(length(yrs.rec)-20)]
-plt.name <- paste(path.out,"/PLOT_Fig2_forced_mod_rec.pdf",sep="")
+plt.name <- paste(path.out,"/Fig2/Fig2_forced_mod_rec.pdf",sep="")
 pdf(file = plt.name,width=7,height=7)
 par(mfrow=c(1,1),cex=1.2,oma=c(2,2,2,0))
 y.lim=c(min(log(rec.mods) ,na.rm=T),max(log(rec.mods) ,na.rm=T)+1)
@@ -79,7 +77,7 @@ legend(1966,20.9,cex=0.7,
        )
  dev.off()
 
-plt.name <- paste(path.out,"/PLOT_scatter2.pdf",sep="")
+plt.name <- paste(path.out,"/Fig2_scatter.pdf",sep="")
 pdf(file = plt.name,width=7,height=7)
 par(mfrow=c(1,1),cex=1.2,oma=c(2,2,2,0))
 
