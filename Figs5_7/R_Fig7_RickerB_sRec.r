@@ -1,22 +1,13 @@
-# modified from oct4, in turn from "jul5_R_krill.txt"
-# best and "pure" Ricker
-
-# phizero(iarea)        = Bzero(iarea)/Rzero(iarea);
-# RecTmp = elem_prod((Stmp / phizero(i_area)) , mfexp( alpha(i_area) *
-# ( 1. - Stmp / Bzero(i_area) ))) ;
-# //Ricker form from Dorn (RickerB)
-
-rm(list=ls())
-
-path.nm <- "C:/zot/ADMB_github/dec10/"
-path.out <- "C:/zot/ADMB_github/dec10/Figs5_6/"
+# setwd()
+path.in <- getwd()
+path.out <- paste(path.in,'/Figs5_7/',sep='')
 cfg.dirs <- c(
-              "models/Fig1/Ricker(b)/",
-              "models/Fig2/Ricker(b)/"
+              "/models/best/Ricker(b)/",
+              "/models/forced/Ricker(b)/"
               )
 plt.titles <- c(
-                "Ricker(b)_best_",
-                "Ricker(b)_forced_"
+                "Fig7_Ricker(b)_best_",
+                "Fig7_Ricker(b)_forced_"
                )	     
 par.a <- par.b <- vector()
 sp.sim <- list()
@@ -25,7 +16,7 @@ sp.sim[[2]] <- seq(1,8e+7,by=4e+5)
 
 # for(i.cfg in 1: length(cfg.dirs)){
 for(i.cfg in 1: length(cfg.dirs)){
-  source(paste(path.nm,cfg.dirs[i.cfg],"krill.rep",sep=""))
+  source(paste(path.in,cfg.dirs[i.cfg],"krill.rep",sep=""))
   par.a[i.cfg] <- alpha
   par.b[i.cfg] <- beta
 
