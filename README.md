@@ -7,4 +7,4 @@ The 'krill.tpl' files were pre-compiled in ADMB version 11.1 for the original pa
 
 The 'Fig...' directories contain the R scripts that produced the corresponding pdfs from Kinzey et al., 2019. These scripts read the 'krill.rep' files for each model and plot results. To reproduce these Figures, download the 'models' directory and the R scripts to a local directory. Use setwd() to identify the location of the 'models' directory before running the scripts.
 
-Figures 3 and 4 in Kinzey et al., 2019 represent over 100 model runs and are not reproduced here.
+Figures 3 and 4 in Kinzey et al., 2019 represent over 100 model runs with different pre-specified values of steepness and recruitment variability and are not reproduced here.
